@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import ErrorBoundary from './components/ErrorBoundary';
 import './index.css';
 
 // Pages
@@ -14,7 +15,12 @@ import AdminDashboard from './pages/AdminDashboard';
 
 const ProtectedRoute = ({ children, roles }) => {
   const { user, loading } = useAuth();
-  if (loading) return <div className="flex-center" style={{ height: '100vh', fontSize: 24 }}>Loading...</div>;
+  if (loading) return (
+    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0a1628', flexDirection: 'column', gap: 16 }}>
+      <div style={{ fontSize: 48 }}>🏛️</div>
+      <div style={{ color: '#e8b84b', fontFamily: 'sans-serif', fontSize: 18 }}>Loading...</div>
+    </div>
+  );
   if (!user) return <Navigate to="/login" />;
   if (roles && !roles.includes(user.role)) return <Navigate to="/" />;
   return children;
@@ -50,14 +56,16 @@ function AppRoutes() {
 
 function App() {
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <Toaster position="top-right" toastOptions={{
-          style: { fontFamily: 'DM Sans, sans-serif', borderRadius: '10px' }
-        }} />
-        <AppRoutes />
-      </BrowserRouter>
-    </AuthProvider>
+    <ErrorBoundary>
+      <AuthProvider>
+        <BrowserRouter>
+          <Toaster position="top-right" toastOptions={{
+            style: { fontFamily: 'DM Sans, sans-serif', borderRadius: '10px' }
+          }} />
+          <AppRoutes />
+        </BrowserRouter>
+      </AuthProvider>
+    </ErrorBoundary>
   );
 }
 
