@@ -7,6 +7,7 @@ const Navbar = () => {
   const { user, logout } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+
   const handleLogout = () => {
     logout();
     toast.success('Logged out successfully');
@@ -14,6 +15,14 @@ const Navbar = () => {
   };
 
   const isActive = (path) => location.pathname === path;
+
+  // Smooth scroll function for page sections
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <nav className="navbar">
@@ -28,9 +37,11 @@ const Navbar = () => {
 
         <div className="nav-links">
           <Link to="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>Home</Link>
-          <Link to="/#about" className="nav-link">About</Link>
-          <Link to="/#academics" className="nav-link">Academics</Link>
-          <Link to="/#contact" className="nav-link">Contact</Link>
+
+          {/* Replacing hash links with buttons for smooth scrolling */}
+          <button type="button" className="nav-link" onClick={() => scrollToSection('about')}>About</button>
+          <button type="button" className="nav-link" onClick={() => scrollToSection('academics')}>Academics</button>
+          <button type="button" className="nav-link" onClick={() => scrollToSection('contact')}>Contact</button>
 
           {!user ? (
             <>
