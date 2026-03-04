@@ -13,7 +13,7 @@ const TeacherDashboard = () => {
   const [attMap, setAttMap] = useState({});
   const [notices, setNotices] = useState([]);
   const [newNotice, setNewNotice] = useState({ title: '', content: '', category: 'general' });
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState([]); // eslint-disable-line no-unused-vars
   const [newResult, setNewResult] = useState({ studentId: '', examName: '', subject: '', totalMarks: 100, obtainedMarks: '', examDate: '' });
   const [savingAtt, setSavingAtt] = useState(false);
 

@@ -330,10 +330,10 @@ const HomePage = () => {
             </div>
             <div className="footer-col">
               <h4>Connect</h4>
-              <a href="#">Facebook</a>
-              <a href="#">Twitter</a>
-              <a href="#">Instagram</a>
-              <a href="#">YouTube</a>
+              <button onClick={() => {}} style={{ display: 'block', color: 'rgba(255,255,255,0.5)', background: 'none', border: 'none', cursor: 'pointer', fontSize: 14, marginBottom: 8, fontFamily: 'DM Sans, sans-serif', padding: 0 }}>Facebook</button>
+              <button onClick={() => {}} style={{ display: 'block', color: 'rgba(255,255,255,0.5)', background: 'none', border: 'none', cursor: 'pointer', fontSize: 14, marginBottom: 8, fontFamily: 'DM Sans, sans-serif', padding: 0 }}>Twitter</button>
+              <button onClick={() => {}} style={{ display: 'block', color: 'rgba(255,255,255,0.5)', background: 'none', border: 'none', cursor: 'pointer', fontSize: 14, marginBottom: 8, fontFamily: 'DM Sans, sans-serif', padding: 0 }}>Instagram</button>
+              <button onClick={() => {}} style={{ display: 'block', color: 'rgba(255,255,255,0.5)', background: 'none', border: 'none', cursor: 'pointer', fontSize: 14, marginBottom: 8, fontFamily: 'DM Sans, sans-serif', padding: 0 }}>YouTube</button>
             </div>
           </div>
           <div className="footer-bottom">
