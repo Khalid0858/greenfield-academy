@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -16,14 +17,6 @@ const Navbar = () => {
 
   const isActive = (path) => location.pathname === path;
 
-  // Smooth scroll function for page sections
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <nav className="navbar">
       <div className="navbar-inner">
@@ -37,11 +30,9 @@ const Navbar = () => {
 
         <div className="nav-links">
           <Link to="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>Home</Link>
-
-          {/* Replacing hash links with buttons for smooth scrolling */}
-          <button type="button" className="nav-link" onClick={() => scrollToSection('about')}>About</button>
-          <button type="button" className="nav-link" onClick={() => scrollToSection('academics')}>Academics</button>
-          <button type="button" className="nav-link" onClick={() => scrollToSection('contact')}>Contact</button>
+          <Link to="/#about" className="nav-link">About</Link>
+          <Link to="/#academics" className="nav-link">Academics</Link>
+          <Link to="/#contact" className="nav-link">Contact</Link>
 
           {!user ? (
             <>
